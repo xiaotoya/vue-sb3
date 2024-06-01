@@ -1,0 +1,37 @@
+def npm
+pipeline {
+    // agent any
+    // parameters {
+    //     string(name: 'TEST1', defaultValue: 'test', description: 'test')
+    //     booleanParam(name: 'SKIP_E2E', defaultValue: false, description: 'skip e2e or not')
+    // }
+    // environment {
+    //     HELLO_WORLD = "Hello World"
+    // }
+    stages {
+        stage('Build') {
+            steps {
+                sh '''
+                    ls -a
+                    node --version
+                    npm --version
+                '''
+                script {
+                    cleanWs()
+                    echo "Build project"
+                    npm = nodeJS.npm()
+                    npm.runTask('ci')
+                    npm.runTask('build --prod')
+                }
+                sh '''
+                    ls -a
+                ''' 
+            }
+        }
+    }
+    // post {
+    //     success {
+    //         archiveArtifacts artifacts: 'a.txt'
+    //     }
+    // }
+}
