@@ -1,6 +1,9 @@
 def npm
 pipeline {
     agent any
+    tools {
+        nodejs "node18.15.0"
+    }
     // parameters {
     //     string(name: 'TEST1', defaultValue: 'test', description: 'test')
     //     booleanParam(name: 'SKIP_E2E', defaultValue: false, description: 'skip e2e or not')
