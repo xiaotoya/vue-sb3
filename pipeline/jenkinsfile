@@ -1,6 +1,6 @@
 def npm
 pipeline {
-    // agent any
+    agent any
     // parameters {
     //     string(name: 'TEST1', defaultValue: 'test', description: 'test')
     //     booleanParam(name: 'SKIP_E2E', defaultValue: false, description: 'skip e2e or not')
